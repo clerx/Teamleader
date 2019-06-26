@@ -156,6 +156,11 @@ class Company
     private $tags;
 
     /**
+     * @var array
+     */
+    private $removeTags;
+
+    /**
      * @var string
      */
     private $description;
@@ -642,6 +647,30 @@ class Company
     }
 
     /**
+     * @return array
+     */
+    public function getRemoveTags()
+    {
+        return $this->removeTags;
+    }
+
+    /**
+     * @param array $removeTags
+     */
+    public function setRemoveTags($removeTags)
+    {
+        $this->removeTags = $removeTags;
+    }
+
+    /**
+     * @param string $tag
+     */
+    public function addRemoveTag($tag)
+    {
+        $this->removeTags[] = $tag;
+    }
+
+    /**
      * @return string
      */
     public function getDescription()
@@ -750,6 +779,9 @@ class Company
         }
         if ($this->getTags()) {
             $return['add_tag_by_string'] = implode(',', $this->getTags());
+        }
+        if ($this->getRemoveTags()) {
+            $return['remove_tag_by_string'] = implode(',', $this->getRemoveTags());
         }
         if ($this->getWebsite()) {
             $return['website'] = $this->getWebsite();
