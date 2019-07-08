@@ -698,9 +698,6 @@ class Company
 
         foreach ($data as $key => $value) {
             switch ($key) {
-                case 'tags':
-                    break;
-
                 case substr($key, 0, 3) == 'cf_':
                     $chunks = explode('_', $key);
                     $id = end($chunks);
